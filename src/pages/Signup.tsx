@@ -1,4 +1,6 @@
 import React, { useState, FormEvent } from "react";
+import {  useNavigate } from "react-router-dom";
+
 
 const Signup: React.FC = () => {
   const [fullName, setFullName] = useState<string>("");
@@ -7,6 +9,7 @@ const Signup: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [agreeTerms, setAgreeTerms] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -202,9 +205,9 @@ const Signup: React.FC = () => {
         
         <p className="mt-6 text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+          <button  onClick={() => navigate("/")} className="font-medium text-indigo-600 hover:text-indigo-500">
             Sign in
-          </a>
+          </button>
         </p>
       </div>
     </div>

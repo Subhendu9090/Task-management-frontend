@@ -1,9 +1,12 @@
 import React, { useState, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -103,9 +106,9 @@ const Login: React.FC = () => {
               </label>
             </div>
             <div className="text-sm">
-              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <button onClick={() => navigate("/forgot-password")} className="font-medium text-indigo-600 hover:text-indigo-500">
                 Forgot password?
-              </a>
+              </button>
             </div>
           </div>
           
@@ -147,12 +150,16 @@ const Login: React.FC = () => {
           </div>
         </div>
         
-        <p className="mt-6 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
-          <a href="Signup.tsx" className="font-medium text-indigo-600 hover:text-indigo-500">
+       
+      <p className="mt-6 text-center text-sm text-gray-600">
+        Don't have an account?{" "}
+         
+          <button onClick={() => navigate("/signup")} className="font-medium text-indigo-600 hover:text-indigo-500">
             Sign up now
-          </a>
-        </p>
+          </button>
+        
+      </p>
+    
       </div>
     </div>
   );

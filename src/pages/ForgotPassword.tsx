@@ -1,14 +1,14 @@
 import React, { useState, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword: React.FC = () => {
-  // State for multi-step form
   const [step, setStep] = useState<number>(1);
   const [email, setEmail] = useState<string>("");
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const [newPassword, setNewPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  
+  const navigate = useNavigate()
   // Handle OTP input change
   const handleOtpChange = (index: number, value: string) => {
     if (value.length > 1) return; // Only allow one character per input
@@ -111,9 +111,9 @@ const ForgotPassword: React.FC = () => {
             
             <p className="text-center text-sm text-gray-600">
               Remember your password?{" "}
-              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <button onClick={() => navigate("/")}  className="font-medium text-indigo-600 hover:text-indigo-500">
                 Sign in
-              </a>
+              </button>
             </p>
           </form>
         )}
@@ -217,7 +217,7 @@ const ForgotPassword: React.FC = () => {
                   )}
                 </button>
               </div>
-              <p className="mt-1 text-xs text-gray-500">Password must be at least 8 characters long</p>
+              <p className="mt-1 text-xs text-gray-500">Password must be at least 4 characters long</p>
             </div>
             
             <div>
